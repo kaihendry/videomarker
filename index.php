@@ -31,7 +31,8 @@ include("dj.php");
 displayJSON("GOPR0014");
 ?>
 </ul>
-
 </div>
+
+<p><a href="https://github.com/kaihendry/videomarker">Source code, please help out!</a></p>
 </body>
 </html>
