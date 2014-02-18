@@ -4,9 +4,25 @@ $(document).ready(function() {
 	});
 
 	$("#myform").on("submit", function(event) {
-		console.log("here I am");
 		event.preventDefault();
-		console.log($(this).serialize());
+		$.post('/save.php', $(this).serializeArray(), function(response) {
+			//console.log(response);
+
+			var pos = "";
+			if (response.pos) {
+				pos = " @" + response.pos;
+			}
+
+			var tags = "";
+			if (response.tag) {
+				tags = response.tag.join(',');
+			}
+
+			d = new Date().toISOString().split("T")[0];
+
+			$('.feedback').prepend("<li>" + d + " " +  response.IP + " says: " +
+				tags + pos + " <span class=comment>" + response.comment + "</span></li>");
+		});
 	});
 
 });

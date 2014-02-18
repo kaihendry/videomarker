@@ -26,9 +26,10 @@
 </form>
 
 <ul class=feedback>
-	<li>2014-03-13 108-240-30-84.lightspeed.cicril.sbcglobal.net says: funny, boring @7.408 <span class=comment>wrong date!</span>
-	<li>2014-01-13 192.241.220.241 says: interesting @0.0 <span class=comment>cool</span>
-	<li>2013-12-13 203.117.37.235 says: boring @3.410 <span class=comment>sucks</span>
+<?php
+include("dj.php");
+displayJSON("GOPR0014");
+?>
 </ul>
 
 </div>
