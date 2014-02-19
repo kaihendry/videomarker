@@ -7,5 +7,5 @@ Add VIDEOS.txt of your MP4 files
 
 E.g.
 
-	curl -s "http://$YOUR_BUCKET.s3.amazonaws.com/" |
+	url=http://mr2011.s3.amazonaws.com/; curl -s "$url" |
 	xmlstarlet sel -N w="http://s3.amazonaws.com/doc/2006-03-01/" -T -t -m "//w:Key" -o "$url" -v . -n | grep mp4$ > VIDEOS.txt
