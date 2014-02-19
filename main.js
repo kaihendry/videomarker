@@ -1,12 +1,12 @@
 $(document).ready(function() {
-	$("#GOPR0014 video").on("timeupdate", function(event) {
-		onTrackedVideoFrame(this.currentTime, this.duration);
+	$(".v video").on("timeupdate", function(event) {
+		$(this).siblings(".current").text(this.currentTime);
+		$(this).siblings(".duration").text(this.duration);
 	});
 
-	$("#myform").on("submit", function(event) {
+	$(".feedbackform").on("submit", function(event) {
 		event.preventDefault();
 		$.post('/save.php', $(this).serializeArray(), function(response) {
-			//console.log(response);
 
 			var pos = "";
 			if (response.pos) {
@@ -20,16 +20,14 @@ $(document).ready(function() {
 
 			d = new Date().toISOString().split("T")[0];
 
-			$('.feedback').prepend("<li>" + d + " " +  response.IP + " says: " +
-				tags + pos + " <span class=comment>" + response.comment + "</span></li>");
+			$(this).parents('.v').first().find('.feedback').css("background-color", "red");
+			$(this).closest('.v').find('.feedback').prepend("<li>fsdfs</li>");
+			$(this).parents().closest('.feedback').css("background-color", "red");
+			console.log("here");
+
+			$(this).closest('.v').find('.feedback').prepend("<li>" + d + " " + response.IP + " says: " + tags + pos + " <span class=comment>" + response.comment + "</span></li>");
 		});
 	});
 
 });
-
-function onTrackedVideoFrame(currentTime, duration) {
-	$('input[name=pos]').val(currentTime)
-	$("#current").text(currentTime);
-	$("#duration").text(duration);
-}
 

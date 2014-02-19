@@ -1,6 +1,7 @@
 <?php
 
 function displayJSON($dir) {
+	if (! is_dir($dir)) return;
 	$dirFiles = array();
 	if ($handle = opendir($dir)) {
 
