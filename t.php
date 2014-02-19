@@ -9,7 +9,7 @@
 <input type=text size=50 name=comment placeholder="Comments?">
 <input type=hidden name=pos>
 <input type=hidden name=video value="<?php echo $v; ?>">
-<button type="button">Mark</button>
+<button>Mark</button>
 <span class="current">0:00</span>/<span class="duration">0:00</span>
 </form>
 
