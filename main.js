@@ -6,12 +6,31 @@ $(document).ready(function() {
 		$(this).closest('.v').find('input[name=pos]').val(this.currentTime);
 	});
 
+	$('.v video').click(function() {
+		this.paused ? this.play() : this.pause();
+	});
+
+	$('.v').on('keydown', function(e) {
+		if (e.ctrlKey && e.keyCode === 13) {
+			var v = $(this).find('video').get(0);
+			v.paused ? v.play() : v.pause();
+			// console.log("Ctrl+ENTER");
+		}
+	});
+
 	$(".feedbackform").on("submit", function(event) {
 		event.preventDefault();
+
+		if (!$(this).find('input[name=pos]').val() > 0) {
+			alert("Position not set: Watch the video!");
+			return;
+		}
 
 		var self = $(this);
 
 		$.post('/save.php', $(this).serializeArray(), function(response) {
+
+			// console.log(response);
 
 			var pos = "";
 			if (response.pos) {
@@ -25,9 +44,21 @@ $(document).ready(function() {
 
 			d = new Date().toISOString().split("T")[0];
 
-			self.closest('.v').find('.feedback').prepend("<li>" + d + " " + response.IP + " says: " + tags + pos + " <span class=comment>" + response.comment + "</span></li>");
-		});
-	});
+			self.closest('.v').find('.feedback').prepend("<li id=" + response.id + ">" + d + " " + response.IP + " says: " + tags + pos + " <span class=comment>" + response.comment + "</span> <button class=delete>delete</button></li>");
 
+			self.closest('.v').find('.delete').click(function() {
+				var payload = {};
+				payload.id = response.id;
+				payload.video = response.video;
+				$.post('/delete.php', payload, function(r) {
+//					console.log("Remove the added thing", r);
+//					self.closest('.v').find('#' + r.id).css("background-color", "red");
+					self.closest('.v').find('#' + r.id).remove();
+				});
+
+			});
+		});
+
+	});
 });
 

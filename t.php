@@ -6,7 +6,8 @@
 <label><input type="checkbox" name="tag[]" value="funny">funny</label>
 <label><input type="checkbox" name="tag[]" value="boring">boring</label>
 <label><input type="checkbox" name="tag[]" value="interesting">interesting</label>
-<input type=text size=50 name=comment placeholder="Comments?">
+<!-- <input type=date name=date> -->
+<input title="ctrl+enter to stop/start the video" type=text size=50 name=comment placeholder="Comments?">
 <input type=hidden name=pos>
 <input type=hidden name=video value="<?php echo $v; ?>">
 <button>Mark</button>

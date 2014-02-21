@@ -9,3 +9,7 @@ E.g.
 
 	url=http://mr2011.s3.amazonaws.com/; curl -s "$url" |
 	xmlstarlet sel -N w="http://s3.amazonaws.com/doc/2006-03-01/" -T -t -m "//w:Key" -o "$url" -v . -n | grep mp4$ > VIDEOS.txt
+
+TODO
+
+* Pagination /?currentpage=1&perpage=10
