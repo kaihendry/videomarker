@@ -45,13 +45,14 @@ $(document).ready(function() {
 			d = new Date().toISOString().split("T")[0];
 
 			self.closest('.v').find('.feedback').prepend("<li id=" + response.id + ">" + d + " " + response.IP + " says: " + tags + pos + " <span class=comment>" + response.comment + "</span> <button class=delete>delete</button></li>");
+			console.log("Added " + response.id);
 
-			self.closest('.v').find('.delete').click(function() {
+			self.closest('.v').find('#' + + response.id).click(function() {
 				var payload = {};
 				payload.id = response.id;
 				payload.video = response.video;
 				$.post('/delete.php', payload, function(r) {
-//					console.log("Remove the added thing", r);
+					console.log("Remove the added thing", r);
 //					self.closest('.v').find('#' + r.id).css("background-color", "red");
 					self.closest('.v').find('#' + r.id).remove();
 				});
