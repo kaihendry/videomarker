@@ -47,7 +47,7 @@ $(document).ready(function() {
 			self.closest('.v').find('.feedback').prepend("<li id=" + response.id + ">" + d + " " + response.IP + " says: " + tags + pos + " <span class=comment>" + response.comment + "</span> <button class=delete>delete</button></li>");
 			console.log("Added " + response.id);
 
-			self.closest('.v').find('#' + + response.id).click(function() {
+			self.closest('.v').find('#' + + response.id + " button").click(function() {
 				var payload = {};
 				payload.id = response.id;
 				payload.video = response.video;
