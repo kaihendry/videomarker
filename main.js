@@ -58,6 +58,9 @@ $(document).ready(function() {
 				});
 
 			});
+
+			self.find("input[name='comment']").val('');
+
 		});
 
 	});
