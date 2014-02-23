@@ -6,14 +6,6 @@ $(document).ready(function() {
 		$(this).closest('.v').find('input[name=pos]').val(this.currentTime);
 	});
 
-	$('.v').on('keydown', function(e) {
-		if (e.ctrlKey && e.keyCode === 13) {
-			var v = $(this).find('video').get(0);
-			v.paused ? v.play() : v.pause();
-			// console.log("Ctrl+ENTER");
-		}
-	});
-
 	$(".pos").click(function() {
 		console.log("here");
 		var v = $(this).closest('.v').find('video').get(0);
