@@ -18,13 +18,11 @@ $(document).ready(function() {
 		}
 	});
 
-//	$(".pos").click(function() {
-//		console.log("POS", $(this).text());
-//		//var v = $().closest('.v video').get(0);
-//		var v = $().closest('.v video');
-//		console.log(v);
-//		v.currentTime = $(this).text().substring(1);
-//	});
+	$(".pos").click(function() {
+		console.log("here");
+		var v = $(this).closest('.v').find('video').get(0);
+		v.currentTime = $(this).text().substring(1);
+	});
 
 	$(".feedbackform").on("submit", function(event) {
 		event.preventDefault();
@@ -55,7 +53,8 @@ $(document).ready(function() {
 			console.log("Added " + response.id);
 
 			$(".pos").click(function() {
-				var v = self.closest('.v').find('video').get(0);
+				console.log("pos on added");
+				var v = $(this).closest('.v').find('video').get(0);
 				v.currentTime = $(this).text().substring(1);
 			});
 

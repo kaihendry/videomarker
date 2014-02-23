@@ -28,7 +28,7 @@ function output($jsonfile) {
 
 	$pos = "";
 	if (strlen($d->pos) > 0) {
-		$pos = "@" . $d->pos;
+		$pos = "<button class=pos>@" . $d->pos . "</button>";
 	}
 
 	$tags = "";
@@ -41,7 +41,7 @@ function output($jsonfile) {
 		$comment = $d->comment;
 	}
 
-	echo "<li>" . date('Y-m-d', $epoch) . " " . $d->IP . " says: " . $tags . "<button class=pos>$pos</button> <span class=comment>" . $comment . "</span></li>\n";
+	echo "<li>" . date('Y-m-d', $epoch) . " " . $d->IP . " says: " . $tags . "$pos <span class=comment>" . $comment . "</span></li>\n";
 }
 
 
